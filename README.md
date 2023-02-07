@@ -1,4 +1,4 @@
-# :scroll: Quizzer-lib / libquiz
+# 📜 Quizzer-lib / libquiz
 A simple library for storing Quiz data in a binary file format
 
 This is the backend library for a rewrite of Quizzer
