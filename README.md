@@ -9,5 +9,5 @@ This is the backend library for a rewrite of Quizzer
 - [ ] C API?
   - Not sure about this, might not be implemented
 - [x] Working prototype
-- [ ] Documentation
-- [ ] JSON serialization feature
+- [x] Documentation
+- [x] JSON serialization feature
