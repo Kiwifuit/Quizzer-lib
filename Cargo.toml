@@ -5,6 +5,7 @@ edition = "2021"
 readme = "README.md"
 repository = "https://github.com/Kiwifuit/Quizzer-lib"
 license-file = "LICENSE"
+license =  "GPL-3.0"
 description = "A simple  library for storing quiz data in a binary file format"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
