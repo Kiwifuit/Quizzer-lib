@@ -45,6 +45,33 @@ pub enum QuizItemType {
     TrueOrFalse,
 }
 
+impl Quiz {
+    /// Instantiates a new `Quiz`. No parameters are passed in
+    /// as `Quiz` is a lazy-ish struct
+    pub fn new() -> Self {
+        Self {
+            length: 0,
+            items: Vec::new(),
+        }
+    }
+
+    /// Adds a `QuizItem` to this `Quiz`
+    pub fn add_quiz(&mut self, quiz: QuizItem) {
+        self.length += 1;
+        self.items.push(quiz);
+    }
+
+    /// Gets the `n`th `Quiz`
+    pub fn get_quiz(&self, n: usize) -> Option<&QuizItem> {
+        self.items.get(n)
+    }
+
+    /// Gets the length of this `Quiz`
+    pub const fn get_length(&self) -> u8 {
+        self.length
+    }
+}
+
 impl From<Vec<QuizItem>> for Quiz {
     fn from(value: Vec<QuizItem>) -> Self {
         Self {
@@ -65,6 +92,37 @@ impl From<Vec<(u8, &str, &str)>> for Quiz {
             length: items.len() as u8,
             items,
         }
+    }
+}
+
+impl QuizItem {
+    /// Creates a new quiz item
+    pub fn new(q_type: QuizItemType, question: String, answer: String) -> Self {
+        Self {
+            item_type: q_type,
+            question,
+            answer,
+        }
+    }
+
+    /// Sets the question to this quiz item
+    pub fn set_question(&mut self, question: String) {
+        self.question = question;
+    }
+
+    /// Sets the answer to this quiz item
+    pub fn set_answer(&mut self, answer: String) {
+        self.answer = answer;
+    }
+
+    /// Gets the question to this question
+    pub fn get_question(&self) -> &String {
+        &self.question
+    }
+
+    /// Gets the answer to this question
+    pub fn get_answer(&self) -> &String {
+        &self.answer
     }
 }
 
