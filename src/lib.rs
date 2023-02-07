@@ -1,5 +1,11 @@
-pub mod data;
-pub mod quiz;
+//! libqizzer
+//!
+//! Utilities to represent and de/serialize Quiz Data
+mod data;
+mod quiz;
+
+pub use data::*;
+pub use quiz::*;
 
 #[cfg(test)]
 mod test {

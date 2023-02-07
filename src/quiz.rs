@@ -1,11 +1,34 @@
+//! Entities for representing quizzes programmatically
+//! # Example
+//! ```rs
+//! let raw_values = vec![
+//!   (1u8, "Do you love her?", "yes"),
+//!   (1u8, "Amoogns cronut", "no"),
+//!   (1u8, "Weeeeeeeeeeee", "yes"),
+//!   (1u8, "Fourth question?", "yes"),
+//!   (1u8, "Is the next question of the same type?", "no"),
+//!   (2u8, "Who is the bestest doggo in the world?", "Rosie"),
+//!   (2u8, "Who is the smelliest doggo in the world?", "Tasha"),
+//!   (3u8, "What is life?", "Damn bro idk"),
+//!   (
+//!       3u8,
+//!       "What is this hit game called Amongus?",
+//!       "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+//!   ),
+//! ];
+//!
+//! let quiz = quizzer::Quiz::from(raw_values)
+//! ```
 use serde::{Deserialize, Serialize};
 
+/// Represents a quiz
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Quiz {
     length: u8,
     items: Vec<QuizItem>,
 }
 
+/// Represents a quiz item, with a type, a question, and an answer
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct QuizItem {
     item_type: QuizItemType,
@@ -13,6 +36,8 @@ pub struct QuizItem {
     answer: String,
 }
 
+/// Represents a quiz type. This can be a Multiple Choice
+/// quiz, a Fill in the Blank quiz, or a True or False quiz
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub enum QuizItemType {
     MultipleChoice,
