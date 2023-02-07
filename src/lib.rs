@@ -1,8 +1,8 @@
 //! libqizzer
 //!
 //! Utilities to represent and de/serialize Quiz Data
-mod data;
-mod quiz;
+pub mod data;
+pub mod quiz;
 
 pub use data::*;
 pub use quiz::*;

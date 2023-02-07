@@ -40,6 +40,16 @@ cfg_if::cfg_if! {
     }
 }
 
+/// Loads a `Quiz` from a `Read`able , preferably a file.
+///
+/// When the `json` feature is enabled, this function will use
+/// `serde_json::from_reader` and returns a `serde_json::Error`
+/// as an error type instead of the `bincode` counterparts
+///
+/// # Notes
+/// Reading/Writing to/from `Cursor`s might not be desirable,
+/// as for some reason reading and writing to/from them does not
+/// work? I, the package author am not quite sure
 pub fn load<R>(file: &mut R) -> Result<Quiz, DataError>
 where
     R: Read,
@@ -47,6 +57,16 @@ where
     deserialize(file)
 }
 
+/// Dumps a `Quiz` to a `Write`able , preferably a file.
+///
+/// When the `json` feature is enabled, this function will use
+/// `serde_json::to_writer` and returns a `serde_json::Error`
+/// as an error type instead of the `bincode` counterparts
+///
+/// # Notes
+/// Reading/Writing to/from `Cursor`s might not be desirable,
+/// as for some reason reading and writing to/from them does not
+/// work? I, the package author am not quite sure
 pub fn dump<W>(file: &mut W, data: &Quiz) -> Result<(), DataError>
 where
     W: Write,
