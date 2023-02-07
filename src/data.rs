@@ -29,20 +29,27 @@
 use std::io::{Read, Write};
 
 use crate::quiz::Quiz;
-use bincode::{deserialize_from, serialize_into};
 
-type DataError = bincode::Error;
+cfg_if::cfg_if! {
+    if #[cfg(feature = "json")] {
+        use serde_json::{from_reader as deserialize, to_writer as serialize};
+        type DataError = serde_json::Error;
+    } else {
+        use bincode::{deserialize_from as deserialize, serialize_into as serialize};
+        type DataError = bincode::Error;
+    }
+}
 
 pub fn load<R>(file: &mut R) -> Result<Quiz, DataError>
 where
     R: Read,
 {
-    deserialize_from(file)
+    deserialize(file)
 }
 
 pub fn dump<W>(file: &mut W, data: &Quiz) -> Result<(), DataError>
 where
     W: Write,
 {
-    serialize_into(file, data)
+    serialize(file, data)
 }
