@@ -1,2 +1,4 @@
 /target
 /Cargo.lock
+# This one is a dump made by the tests
+/dump.bin
