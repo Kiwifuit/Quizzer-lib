@@ -8,7 +8,4 @@ This is the backend library for a rewrite of Quizzer
 ## Todo
 - [ ] C API?
   - Not sure about this, might not be implemented
-- [ ] Web implementation
-  - Again, not sure about this
-  - Might not be that hard to implement, as `iced` can also be used to target the web
-- [ ] Working prototype
+- [x] Working prototype
